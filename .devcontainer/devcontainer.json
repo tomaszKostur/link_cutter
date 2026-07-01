@@ -1,0 +1,73 @@
+// .devcontainer/devcontainer.json
+{
+    "name": "Django REST Framework",
+    // "dockerComposeFile": "docker-compose.yml",
+    // "service": "app",
+    "build": {
+        "dockerfile": "../dev_env.containerfile",
+        "context": ".."
+    },
+    "runArgs": [
+        "--network=host"
+    ],
+    // "workspaceFolder": "/workspace",
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.black-formatter",
+                "ms-python.ruff",
+                "batisteo.vscode-django",
+                "tamasfe.even-better-toml",
+                "redhat.vscode-yaml",
+                "mtxr.sqltools",
+                "mtxr.sqltools-driver-pg"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.testing.pytestEnabled": true,
+                "python.testing.unittestEnabled": false,
+                "python.analysis.typeCheckingMode": "basic",
+                "editor.formatOnSave": true,
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter",
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll.ruff": "explicit",
+                        "source.organizeImports.ruff": "explicit"
+                    }
+                },
+                "files.exclude": {
+                    "**/__pycache__": true,
+                    "**/.pytest_cache": true,
+                    "**/.ruff_cache": true
+                },
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash",
+                        "args": [
+                            "-l"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    //   "forwardPorts": [8000, 5432, 6379],
+    //   "portsAttributes": {
+    //     "8000": {
+    //       "label": "Django API"
+    //     },
+    //     "5432": {
+    //       "label": "PostgreSQL"
+    //     },
+    //     "6379": {
+    //       "label": "Redis"
+    //     }
+    //   },
+    "remoteUser": "vscode"
+}

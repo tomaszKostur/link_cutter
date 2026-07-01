@@ -1,0 +1,9 @@
+Django
+djangorestframework
+psycopg[binary]
+django-environ
+pytest
+pytest-django
+ruff
+black
+requests
